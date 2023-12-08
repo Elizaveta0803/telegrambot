@@ -4,6 +4,9 @@ import os
 from clickhouse_driver import Client
 import pandas as pd
 from aiogram import Bot, Dispatcher, executor, types
+from ddl import *
+
+db_connect()
 
 logging.basicConfig(
     format="%(levelname)s: %(asctime)s - %(message)s",
@@ -19,7 +22,7 @@ bot = Bot(token=APP_TOKEN)
 dp = Dispatcher(bot)
 
 connection = Client(
-    host="localhost",  # <-- Проблема вот тут
+    host="ch_db",  # <-- Проблема вот тут
     user="default",
     password="",
     port=9000,
